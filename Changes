@@ -1,5 +1,11 @@
 Revision history for Perl module Getopt::Gen
 
+0.08 Thu, 16 Sep 2004 18:48:49 +0200
+  + small bugfixes for pod-generation without 'rcfile' options
+
+0.06, 0.07
+  + ???
+
 0.05 Fri, 21 Feb 2003 00:43:18 +0100
   + added basic rcfile functions
 

@@ -349,6 +349,7 @@ void
   @]
 }
 
+#if !defined(HAVE_STRDUP) && !defined(strdup)
 /* gengetopt_strdup(): automatically generated from strdup.c. */
 /* strdup.c replacement of strdup, which is not standard */
 static char *
@@ -360,7 +361,7 @@ gengetopt_strdup (const char *s)
   strcpy(result, s);
   return result;
 }
-
+#endif /* HAVE_STRDUP */
 
 /* clear_args(args_info): clears all args & resets to defaults */
 static void
