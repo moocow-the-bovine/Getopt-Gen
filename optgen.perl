@@ -14,7 +14,7 @@ use Getopt::Gen::cmdline_h;
 use Getopt::Gen::cmdline_c;
 use Getopt::Gen::cmdline_pod;
 
-use Getopt::Long;
+use Getopt::Long qw(:config gnu_getopt); # be compatible with gnu getopt
 use Pod::Usage;
 use IO::File;
 
@@ -48,7 +48,6 @@ $handle_rcfile = 1;
 
 $cmdline = join(' ',$0,@ARGV);  ## -- save for later
 
-
 GetOptions(## General Options
 	   'help|h|?' => \$help,
 	   'man' => \$man,
@@ -67,10 +66,10 @@ GetOptions(## General Options
 	   "define|D=s" => \%defines,
 	   #...more here
 	   "reparse-action|r=s" => \$reparse_action,
-	   "handle-help!" => \$handle_help,
-	   "handle-version!" => \$handle_version,
-	   "handle-error|handle-errors!" => \$handle_error,
-	   "handle-rcfile!" => \$handle_rcfile,
+	   "handle-help" => \$handle_help,
+	   "handle-version" => \$handle_version,
+	   "handle-error|handle-errors" => \$handle_error,
+	   "handle-rcfile" => \$handle_rcfile,
 	   "no-handle-help" => sub { $handle_help = !$_[1]; },
 	   "no-handle-version" => sub { $handle_version = !$_[1]; },
 	   "no-handle-error|no-handle-errors" => sub { $handle_error = !$_[1]; },
