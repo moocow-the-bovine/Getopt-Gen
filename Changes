@@ -1,0 +1,16 @@
+Revision history for Perl module Getopt::Gen
+
+0.05 Fri, 21 Feb 2003 00:43:18 +0100
+  + added basic rcfile functions
+
+0.04 Fri Feb  7 12:36:35 CET 2003
+  + minor bugfixes
+  + re-introduced user-templates into 'optgen.perl'
+
+0.02 - 0.03
+  + integrated cmdline_c.pm, cmdline_h.pm, cmdline_pod.pm
+    into distribution (DATA filehandle hack)
+  + documented optgen.perl a bit
+
+0.01 Tue Jan 28 03:50:59 CET 2003
+  + initial revision

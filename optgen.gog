@@ -1,0 +1,126 @@
+# -*- Mode: Text -*-
+package "optgen.perl"
+purpose "Generate C source code for command-line parsing."
+version "0.01"
+author "Bryan Jurish <moocow@ling.uni-potsdam.de>"
+
+#-----------------------------------------------------------
+# General Options
+#-----------------------------------------------------------
+group "General Options"
+option "help"    h "Print a short help message and exit" no
+option "man"     - "Print a long help message and exit" no
+option "version" V "Print version and exit" no
+
+#-----------------------------------------------------------
+# Generation Options
+#-----------------------------------------------------------
+group "Generation Options"
+option "input" i "Initial input file for compatibility" \
+        string \
+	default="-" \
+	details="See L<INPUT_FILE(s)>" \
+	no
+
+option "func-name"  f	"Name of function to generate" \
+       string \
+       default="cmdline_parser" \
+       no
+
+option "file-name"  F   "Basename of output file(s)" \
+       string \
+       default="cmdline" \
+       no
+
+option "long-help"  l	"Include long options in help?" \
+       flag \
+       off
+
+option "struct-name" n  "Basename of generated C struct" \
+       string \
+       default="gengetopt_args_info" \
+       no
+
+option "unnamed" u "Allow unnamed 'options' (arguments)" \
+       no
+
+option "nohfile" - "Do not generate .h file" no
+option "nocfile" - "Do not generate .c file" no
+option "nopod"   - "Do not generate .pod file" no
+
+option "define"  D "Define additional replacement macros" \
+       string \
+       default="" \
+       arg="KEY=VALUE" \
+       no
+
+option "reparse-action" r "What to do when an option is given > once" \
+       string \
+       default="error" \
+       arg="ACT" \
+       details="One of: error,warn,ignore." \
+       no
+
+option "no-handle-help" - "Do not handle --help and -h options" no
+option "no-handle-version" - "Do not handle --version and -V options" no
+option "no-handle-error" - "Do not handle errors" no
+
+#-----------------------------------------------------------
+# INPUT_FILE(s)
+#-----------------------------------------------------------
+argument "INPUT_FILE(s)" "Option specification files" \
+	details="
+Command-line specification files.  Format is similar
+to that used by gengetopt.  Lines are of one of the
+following forms:
+
+=over 4
+
+=item * KEYWORD \"VALUE\"
+
+Declare a keyword value.  Keywords used:
+package, version, author, purpose, details.
+
+User keywords are parsed also.
+
+=item * argument \"NAME\" \"DESCRIPTION\" ATTRIBUTES
+
+Declares an unnamed argument.
+Attributes used: details.
+
+=item * option \"LONGNAME\" SHORTNAME \"DESCRIPTION\" no
+
+Declares a 'function' option.
+
+=item * option \"LONGNAME\" SHORTNAME \"DESCRIPTION\" flag INITIALSTATE
+
+Decalres a 'flag' option.
+INITIALSTATE is one of: on, off.
+
+=item * option \"LONGNAME\" SHORTNAME \"DESCRIPTION\" TYPE ATTRIBUTES REQUIRED
+
+Declares an option with an argument.  TYPE is one of:
+string, int, short, long, float, double, longdouble.
+
+ATTRIBUTES used: default, details.
+
+REQUIRED is one of: yes, no.
+
+=back
+
+See L<gengetopt> for details on how these values effect the
+generated code.
+"
+
+#-----------------------------------------------------------
+# FOOTER
+#-----------------------------------------------------------
+seealso "L<perl>, L<gengetopt>, L<Getopt::Gen>."
+
+acknowledge "
+
+perl by Larry Wall.
+
+'gengetopt' was originally written by Roberto Arturo Tena Sanchez,
+and it is currently maintained by Lorenzo Bettini.
+"
