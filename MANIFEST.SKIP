@@ -1,0 +1,17 @@
+MANIFEST\.SKIP
+CVS
+\.cvsignore
+~$
+^Makefile
+t/tmp\.
+^blib/
+^pm_to_blib$
+\.tar\.gz$
+^README\.pod$
+Parser\.output$
+^Getopt$
+^examples/\w*skel\.\w+$
+^optgen.gog$
+^save
+^test
+\bgraveyard\b
