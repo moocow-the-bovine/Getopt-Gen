@@ -1,7 +1,7 @@
 # -*- Mode: Text -*-
 package "optgen.perl"
 purpose "Generate C source code for command-line parsing."
-version "0.01"
+version "0.04"
 author "Bryan Jurish <moocow@ling.uni-potsdam.de>"
 
 #-----------------------------------------------------------
