@@ -147,12 +147,15 @@ __DATA__
 #include <errno.h>
 #include <string.h>
 #include <unistd.h>
-#include <pwd.h>
 #include <ctype.h>
 
 /* If we use autoconf/autoheader.  */
 #ifdef HAVE_CONFIG_H
 # include "config.h"
+#endif
+
+#ifdef HAVE_PWD_H
+# include <pwd.h>
 #endif
 
 /* Allow user-overrides for PACKAGE and VERSION */
@@ -721,6 +724,7 @@ void
 
   if (!filename) return; /* ignore NULL filenames */
 
+#if defined(HAVE_GETUID) && defined(HAVE_GETPWUID)
   if (*filename == '~') {
     /* tilde-expansion hack */
     struct passwd *pwent = getpwuid(getuid());
@@ -738,6 +742,9 @@ void
   } else {
     fullname = strdup(filename);
   }
+#else /* !(defined(HAVE_GETUID) && defined(HAVE_GETPWUID)) */
+  fullname = strdup(filename);
+#endif /* defined(HAVE_GETUID) && defined(HAVE_GETPWUID) */
 
   /* try to open */
   rcfile = fopen(fullname,"r");
