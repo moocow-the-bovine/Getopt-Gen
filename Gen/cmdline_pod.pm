@@ -347,10 +347,10 @@ __DATA__
 ###############################################################
 # configuration files
 ###############################################################
-=pod
 [@
   if (@{$og{rcfiles}} || $og{handle_rcfile} || $saw_rc_file) {
-    $OUT .= qq(
+    $OUT .= qq(=pod
+
 =head1 CONFIGURATION FILES
 
 Configuration files are expected to contain lines of the form:
@@ -374,9 +374,9 @@ are ignored.
       $OUT .= "No configuration files are read by default.\n\n";
     }
   }
+ $OUT .= "=cut\n"
 @]
 
-=cut
 
 ###############################################################
 # Addenda
@@ -432,3 +432,6 @@ Getopt::Gen by Bryan Jurish.'; @]
 [@ (defined($og{USER}{seealso}) ? $og{USER}{seealso} : 'L<perl>, L<Getopt::Gen>.'); @]
 
 =cut
+
+[@ $saw_rc_file = 0; '' @]
+

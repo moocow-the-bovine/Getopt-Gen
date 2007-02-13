@@ -147,12 +147,15 @@ __DATA__
 #include <errno.h>
 #include <string.h>
 #include <unistd.h>
-#include <pwd.h>
 #include <ctype.h>
 
 /* If we use autoconf/autoheader.  */
 #ifdef HAVE_CONFIG_H
 # include "config.h"
+#endif
+
+#ifdef HAVE_PWD_H
+# include <pwd.h>
 #endif
 
 /* Allow user-overrides for PACKAGE and VERSION */
@@ -349,6 +352,7 @@ void
   @]
 }
 
+#if !defined(HAVE_STRDUP) && !defined(strdup)
 /* gengetopt_strdup(): automatically generated from strdup.c. */
 /* strdup.c replacement of strdup, which is not standard */
 static char *
@@ -360,7 +364,7 @@ gengetopt_strdup (const char *s)
   strcpy(result, s);
   return result;
 }
-
+#endif /* HAVE_STRDUP */
 
 /* clear_args(args_info): clears all args & resets to defaults */
 static void
@@ -720,6 +724,7 @@ void
 
   if (!filename) return; /* ignore NULL filenames */
 
+#if defined(HAVE_GETUID) && defined(HAVE_GETPWUID)
   if (*filename == '~') {
     /* tilde-expansion hack */
     struct passwd *pwent = getpwuid(getuid());
@@ -737,6 +742,9 @@ void
   } else {
     fullname = strdup(filename);
   }
+#else /* !(defined(HAVE_GETUID) && defined(HAVE_GETPWUID)) */
+  fullname = strdup(filename);
+#endif /* defined(HAVE_GETUID) && defined(HAVE_GETPWUID) */
 
   /* try to open */
   rcfile = fopen(fullname,"r");
