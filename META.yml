@@ -1,0 +1,13 @@
+# http://module-build.sourceforge.net/META-spec.html
+#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
+name:         Getopt-Gen
+version:      0.10
+version_from: Gen.pm
+installdirs:  site
+requires:
+    Parse::Lex:                    2.15
+    Parse::Yapp::Driver:           1.05
+    Text::Template:                1.42
+
+distribution_type: module
+generated_by: ExtUtils::MakeMaker version 6.30_01
