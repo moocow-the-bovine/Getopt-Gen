@@ -21,7 +21,7 @@ use IO::File;
 ########################################################################
 # Globals
 ########################################################################
-our $VERSION = 0.04;
+our $VERSION = 0.05;
 our $progname = 'optgen.perl';
 
 
@@ -86,10 +86,10 @@ if ($version) {
      "\t using Getopt::Gen version $Getopt::Gen::VERSION\n",
      "\n"
     );
-  exit 1 if ($version);
+  exit 0 if ($version);
 }
-pod2usage({-verbose=>2}) if ($man);
-pod2usage({-verbose=>0}) if ($help);
+pod2usage({-verbose=>2,-exit=>0}) if ($man);
+pod2usage({-verbose=>0,-exit=>0}) if ($help);
 
 
 ###############################################################
