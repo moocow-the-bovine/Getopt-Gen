@@ -8,7 +8,7 @@
 #
 #############################################################################
 
-use lib qw(.);
+use lib qw(. ./blib/lib);
 use Getopt::Gen;
 use Getopt::Gen::cmdline_h;
 use Getopt::Gen::cmdline_c;
@@ -21,7 +21,7 @@ use IO::File;
 ########################################################################
 # Globals
 ########################################################################
-our $VERSION = 0.05;
+our $VERSION = 0.06;
 our $progname = 'optgen.perl';
 
 
@@ -65,6 +65,7 @@ GetOptions(## General Options
 	   "template|t=s" => \$user_template,
 	   "define|D=s" => \%defines,
 	   #...more here
+	   "timestamp!" => \$want_timestamp,
 	   "reparse-action|r=s" => \$reparse_action,
 	   "handle-help" => \$handle_help,
 	   "handle-version" => \$handle_version,
@@ -109,6 +110,7 @@ $og = Getopt::Gen->new(
 		       handle_version=>$handle_version,
 		       handle_error=>$handle_error,
 		       handle_rcfile=>$handle_rcfile,
+		       want_timestamp=>$want_timestamp,
 		      )
   or die("$0: could not create Getopt::Gen object!");
 
@@ -182,7 +184,7 @@ optgen.perl - Generate C source code for command-line parsing.
 
 =head1 VERSION
 
-Version 0.02
+Version 0.06
 
 =head1 SYNOPSIS
 
@@ -208,6 +210,7 @@ Version 0.02
                  --nohfile             Do not generate .h file
                  --nocfile             Do not generate .c file
                  --nopod               Do not generate .pod file
+                 --notimestamp         Do not generate timestamp (for .pod file)
     -tFILE       --template=FILE       Use an alternate template
     -DKEY=VALUE  --define=KEY=VALUE    Define additional replacement macros
     -rACT        --reparse-action=ACT  What to do when an option is given > once

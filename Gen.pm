@@ -36,7 +36,7 @@ use Getopt::Gen::Parser;
 ###############################################################
 # GLOBALS
 ###############################################################
-our $VERSION = "0.10";
+our $VERSION = "0.11";
 
 our %DEFAULT_TEMPLATE_NEWARGS = ();
 
@@ -247,6 +247,7 @@ sub new {
      handle_version=>1,                 # whether to handle '-V' and '--version' options
      handle_rcfile=>1,                  # whether to handle '-c' and '--rcfile' options
      handle_error=>1,                   # whether to exit on errors
+     want_timestamp=>0,                 # whether to add timestamp to pod files
      ## -- parsed data from input file
      package   => undef,                # program package
      #program   => undef,               # program name (in USER)
