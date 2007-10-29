@@ -402,7 +402,7 @@ using Getopt::Gen version [@ $Getopt::Gen::VERSION @].
 @]
 as:
 
-   [@$CMDLINE@]
+   optgen.perl [@ $CMDLINE_OPTIONS @]
 
 =cut
 

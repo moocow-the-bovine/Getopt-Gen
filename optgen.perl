@@ -46,7 +46,8 @@ $handle_rcfile = 1;
 %defines = ();
 
 
-$cmdline = join(' ',$0,@ARGV);  ## -- save for later
+$cmdline_opts = join(' ',   @ARGV);  ##-- also, only options
+$cmdline      = "$0 $cmdline_opts";  ##-- save for later
 
 GetOptions(## General Options
 	   'help|h|?' => \$help,
@@ -131,7 +132,8 @@ foreach (@ARGV) {
 ## -- GENERATION
 %genhash =
   (
-   CMDLINE=>$cmdline,
+   CMDLINE         =>$cmdline,
+   CMDLINE_OPTIONS =>$cmdline_opts,
    OptGenVersion=>$VERSION,
    %defines,
   );
