@@ -14,7 +14,7 @@ on_reparse "clobber"
 bugs "Is it buggy?"
 
 addenda {
-This addenda is braced with {} -- they should nest properly.
+This addenda section is braced with {} -- they should nest properly.
 }
 
 

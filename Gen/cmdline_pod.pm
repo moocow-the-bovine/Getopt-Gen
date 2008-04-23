@@ -1,4 +1,4 @@
-# -*- Mode: Perl -*-
+# -*- Mode: CPerl -*-
 
 #############################################################################
 #
@@ -143,6 +143,7 @@ __DATA__
 @] - [@$og{purpose}@]
 
 [@
+  $OUT = '';
   if (defined($og{USER}{program_version}) || defined($og{version})) {
     $OUT .= "=head1 VERSION\n\n";
     if (defined($og{USER}{program})) {
@@ -151,9 +152,9 @@ __DATA__
         $OUT .= $og{USER}{program_version}.' ';
       }
     } else {
-        $OUT .= ((defined($og{package}) ? ($parens[0].$og{package}.' ') : '')
-                 .(defined($og{version}) ? ($og{version}.$parens[1]) : '')
-                );
+        $OUT .= (defined($og{package})
+                 ? ($og{package}.' '.(defined($og{version}) ? ($og{version}) : ''))
+                 : '');
     }
   }
 @]
@@ -442,4 +443,3 @@ Getopt::Gen by Bryan Jurish.'; @]
 =cut
 
 [@ $saw_rc_file = 0; '' @]
-

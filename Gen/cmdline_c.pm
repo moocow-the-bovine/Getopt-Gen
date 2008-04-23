@@ -1,4 +1,4 @@
-# -*- Mode: Perl -*-
+# -*- Mode: CPerl -*-
 
 #############################################################################
 #
@@ -208,10 +208,6 @@ __DATA__
 # include <getopt.h>
 #endif
 
-#if !defined(HAVE_STRDUP) && !defined(strdup)
-# define strdup gengetopt_strdup
-#endif /* HAVE_STRDUP */
-
 #include "[@$og{filename}@].h"
 
 
@@ -352,11 +348,13 @@ void
   @]
 }
 
-#if !defined(HAVE_STRDUP) && !defined(strdup)
-/* gengetopt_strdup(): automatically generated from strdup.c. */
+#if defined(HAVE_STRDUP) || defined(strdup)
+# define gog_strdup strdup
+#else
+/* gog_strdup(): automatically generated from strdup.c. */
 /* strdup.c replacement of strdup, which is not standard */
 static char *
-gengetopt_strdup (const char *s)
+gog_strdup (const char *s)
 {
   char *result = (char*)malloc(strlen(s) + 1);
   if (result == (char*)0)
@@ -377,7 +375,7 @@ clear_args(struct [@$og{structname}@] *args_info)
    $OUT .= "\n  ".'args_info->'.$opt->{cname}.' = ';
    if ($opt->{type} eq 'string') {
      $OUT .= (defined($opt->{default}) && $opt->{default} ne 'NULL'
-	      ? "strdup(\"$opt->{default}\")" : 'NULL');
+	      ? "gog_strdup(\"$opt->{default}\")" : 'NULL');
    } else {
      $OUT .= (defined($opt->{default}) ? $opt->{default} : '0');
    }
@@ -494,7 +492,7 @@ int
       args_info->inputs_num = argc - optind ;
       args_info->inputs = (char **)(malloc ((args_info->inputs_num)*sizeof(char *))) ;
       while (optind < argc)
-        args_info->inputs[ i++ ] = strdup (argv[optind++]) ; 
+        args_info->inputs[ i++ ] = gog_strdup (argv[optind++]) ; 
   }' : '';
   @]
 
@@ -601,7 +599,7 @@ int
 	       #// -- string-argument options
 	       push(@ocode,
 		    ('  if (args_info->'.$opt->{cname}.') free(args_info->'.$opt->{cname}.');'),
-		    ('  args_info->'.$opt->{cname}." = strdup(val);"),
+		    ('  args_info->'.$opt->{cname}." = gog_strdup(val);"),
 		   );
 	     }
 	     elsif ($opt->{type} eq 'int'
@@ -689,7 +687,7 @@ void
 	      ."  if (value != NULL) {\n  ");
      if ($type eq 'string') {
        $OUT .= ('      if (args_info->'.$cname.') free(args_info->'.$cname.");\n  "
-		.'      args_info->'.$cname." = strdup(value);\n  "
+		.'      args_info->'.$cname." = gog_strdup(value);\n  "
 		."  }\n  "
 		."}\n  ");
      }
@@ -740,10 +738,10 @@ void
     strcpy(fullname, pwent->pw_dir);
     strcat(fullname, filename+1);
   } else {
-    fullname = strdup(filename);
+    fullname = gog_strdup(filename);
   }
 #else /* !(defined(HAVE_GETUID) && defined(HAVE_GETPWUID)) */
-  fullname = strdup(filename);
+  fullname = gog_strdup(filename);
 #endif /* defined(HAVE_GETUID) && defined(HAVE_GETPWUID) */
 
   /* try to open */

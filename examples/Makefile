@@ -9,29 +9,30 @@ DOC_TARGETS = \
 
 TARGETS = $(MAIN_TARGETS) $(DOC_TARGETS)
 
-CC = gcc
-CXX = g++
-IFLAGS = -I/usr/local/include/stlport
-DFLAGS = -DHAVE_CONFIG_H
-OFLAGS = -g
-WFLAGS = -Wall
+CC     ?= gcc
+CXX    ?= g++
+#CC    = $(CXX)
 
-LDFLAGS = -L/usr/local/lib
-LDADD   =
+CPPFLAGS ?= -DHAVE_CONFIG_H
+CFLAGS   ?= -Wall -g 
+
+LDFLAGS  ?=
+LDADD    ?=
+
+PERL ?= perl
 
 all: $(TARGETS)
 
 #----------------------------------------------------------------
 # Misc deps
 
-test1.o: test1.c test1_cmdline.h
-test1: test1.o test1_cmdline.o
-	$(CC)  $(WFLAGS) $(DFLAGS) $(IFLAGS) $(OFLAGS) $(LDFLAGS) -o $@ $^ $(LDADD)
+test1_main.o: test1_main.c test1_cmdline.h
+test1: test1_main.o test1_cmdline.o
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LDADD)
 
-test2.o: test2.c test2_cmdline.h
-test2: test2.o test2_cmdline.o
-	$(CC)  $(WFLAGS) $(DFLAGS) $(IFLAGS) $(OFLAGS) $(LDFLAGS) -o $@ $^ $(LDADD)
-
+test2_main.o: test2_main.c test2_cmdline.h
+test2: test2_main.o test2_cmdline.o
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LDADD)
 
 #cmdline_gog.h: cmdline_gog.gog ../optgen.perl ../Gen.pm ../Gen/Parser.pm ../Gen/cmdline_h.pm
 #cmdline_gog.c: cmdline_gog.gog ../optgen.perl ../Gen.pm ../Gen/Parser.pm ../Gen/cmdline_c.pm
@@ -47,10 +48,10 @@ GOGFLAGS = -l --no-handle-error
 GGOFLAGS = -u -l --no-handle-error
 
 .gog_cmdline.h:
-	../optgen.perl $(GOGFLAGS) -nopod -F $*_cmdline $<
+	$(PERL) -Mlib=../blib/lib ../optgen.perl $(GOGFLAGS) --nopod -F "$*_cmdline" $<
 
 .gog_cmdline.c:
-	../optgen.perl $(GOGFLAGS) -nopod -F $*_cmdline $<
+	$(PERL) -Mlib=../blib/lib ../optgen.perl $(GOGFLAGS) --nopod -F "$*_cmdline" $<
 
 
 #----------------------------------------------------------------
@@ -58,7 +59,7 @@ GGOFLAGS = -u -l --no-handle-error
 .SUFFIXES: .pod .man .txt .1 .html .tex
 
 .gog.pod:
-	../optgen.perl $(GOGFLAGS) -nocfile -nohfile -F $* $<
+	$(PERL) -Mlib=../blib/lib ../optgen.perl $(GOGFLAGS) --nocfile --nohfile -F "$*" $<
 
 POD2MANARGS = --section=1 --center="Center Text"
 
@@ -83,12 +84,12 @@ doc: $(DOC_TARGETS)
 # Compilation Patterns
 
 .c.o:
-	$(CC) $(WFLAGS) $(DFLAGS) $(IFLAGS) $(OFLAGS) -c -o $@ $<
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
 
 
 #----------------------------------------------------------------
 # cleanup
 clean:
 	rm -f *~ *.o *_cmdline.[ch] $(TARGETS)
-	rm -f [^a]*.pod *.html *.txt *.man *.1
+	rm -f [^a]*.pod *.html *.txt *.man *.1 pod*.tmp
 	rm -f *.tex *.latex *.dvi *.ps *.pdf *.toc *.log *.idx *.aux

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "test1_cmdline.h"
 
 struct gengetopt_args_info args;

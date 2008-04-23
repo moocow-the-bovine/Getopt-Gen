@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 #include "config.h"
 #include "test2_cmdline.h"
 
