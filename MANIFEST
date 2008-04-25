@@ -17,8 +17,8 @@ examples/test2.gog
 examples/test1.ggo
 examples/config.h
 examples/Makefile
-examples/test1.c
-examples/test2.c
+examples/test1_main.c
+examples/test2_main.c
 examples/test2rc
 examples/skeletons/ogskel.c
 examples/skeletons/ogskel.h
