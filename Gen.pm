@@ -36,7 +36,7 @@ use Getopt::Gen::Parser;
 ###############################################################
 # GLOBALS
 ###############################################################
-our $VERSION = "0.12";
+our $VERSION = "0.13";
 
 our %DEFAULT_TEMPLATE_NEWARGS = ();
 
@@ -1051,7 +1051,7 @@ sub floatstring_value {
 # $cname = long2cname($longname_string)
 sub long2cname {
   my $long = string_value(shift);
-  $long =~ s/[\-\.]/\_/g;
+  $long =~ s/[[:punct:]\s]/\_/g;
   return $long;
 }
 
