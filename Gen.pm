@@ -731,7 +731,7 @@ sub _yylex_sub {
     }
 
     ($name,$text) = ($token->name,$token->text);
-    print STDERR "LEXER: name=$name ; text=$text\n"; ##-- DEBUG
+    #print STDERR "LEXER: name=$name ; text=$text\n"; ##-- DEBUG
 
 
     ## -- handle (nested) braces
