@@ -21,7 +21,7 @@ use IO::File;
 ########################################################################
 # Globals
 ########################################################################
-our $VERSION = 0.06;
+our $VERSION = 0.07;
 our $progname = 'optgen.perl';
 
 
@@ -117,10 +117,10 @@ $og = Getopt::Gen->new(
 
 push(@ARGV,$input) if (defined($input));
 push(@ARGV,'-') if (!@ARGV);
-foreach (@ARGV) {
-  print STDERR "$progname: parsing '$_'...\n";
-  if (!($rc = $og->parse($_))) {
-    die("$0: could not parse options-file '$_':\n",
+foreach my $gogfile (@ARGV) {
+  print STDERR "$progname: parsing '$gogfile'...\n";
+  if (!($rc = $og->parse($gogfile))) {
+    die("$0: could not parse options-file '$gogfile':\n",
 	"Error: ",
 	(defined($og->{errstr})
 	 ? $og->{errstr}

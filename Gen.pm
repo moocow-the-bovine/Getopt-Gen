@@ -387,7 +387,7 @@ sub parse {
     return undef;
   }
   $og->{infh} = $fh;
-  $og->{lexer}->from(*$fh);
+  $og->{lexer}->from($fh);
   $og->{parser}{USER}{og} = $og;
 
   $result = eval {
@@ -731,6 +731,7 @@ sub _yylex_sub {
     }
 
     ($name,$text) = ($token->name,$token->text);
+    print STDERR "LEXER: name=$name ; text=$text\n"; ##-- DEBUG
 
 
     ## -- handle (nested) braces
