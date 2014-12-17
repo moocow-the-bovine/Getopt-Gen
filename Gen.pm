@@ -1,9 +1,9 @@
-# -*- Mode: CPerl -*-
+## -*- Mode: CPerl -*-
 
 #############################################################################
 #
 # File: Getopt::Gen.pm
-# Author: Bryan Jurish <moocow@ling.uni-potsdam.de>
+# Author: Bryan Jurish <moocow@cpan.org>
 # Description: Parser for extended '.ggo' (gengetopt) files
 #
 #############################################################################
@@ -36,7 +36,7 @@ use Getopt::Gen::Parser;
 ###############################################################
 # GLOBALS
 ###############################################################
-our $VERSION = "0.13";
+our $VERSION = "0.14";
 
 our %DEFAULT_TEMPLATE_NEWARGS = ();
 
@@ -137,6 +137,7 @@ our @OG_KEYWORDS = qw(
 		      rcfile
 		      package
 		      version
+		      podpreamble
 		      purpose
 		      on_reparse
 		      unnamed
@@ -253,6 +254,7 @@ sub new {
      #program   => undef,               # program name (in USER)
      version   => undef,                # program version
      purpose   => undef,                # brief description
+     podpreamble => undef,              # pod preamble
      rcfiles   => [],                   # default config files (literals!)
      args      => [],                   # [ {name=>$arg1name,descr=>$arg1descr},... ]
      user_code => undef,                # literal user code for .c file
@@ -1245,7 +1247,7 @@ and it is currently maintained by Lorenzo Bettini.
 
 =head1 AUTHOR
 
-Bryan Jurish E<lt>moocow@ling.uni-potsdam.deE<gt>
+Bryan Jurish E<lt>moocow@cpan.orgE<gt>
 
 =head1 SEE ALSO
 

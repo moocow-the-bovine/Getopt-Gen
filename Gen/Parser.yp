@@ -3,7 +3,7 @@
 ###############################################################
 #
 #      File: Getopt::Gen::Parser.yp
-#    Author: Bryan Jurish <moocow@ling.uni-potsdam.de>
+#    Author: Bryan Jurish <moocow@cpan.org>
 #
 # Description: Yapp parser specification for
 #              DWDS query strings
@@ -155,6 +155,7 @@ basic_spec:
     TOK_PACKAGE  string { $_[0]->{USER}{og}{package} = $_[2]; }
   | TOK_VERSION  string { $_[0]->{USER}{og}{version} = $_[2]; }
   | TOK_PURPOSE  string { $_[0]->{USER}{og}{purpose} = $_[2]; }
+  | TOK_PODPREAMBLE string { $_[0]->{USER}{og}{podpreamble} = $_[2]; }
   ;
 
 ggo_option_spec:

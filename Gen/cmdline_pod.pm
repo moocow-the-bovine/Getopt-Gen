@@ -3,7 +3,7 @@
 #############################################################################
 #
 # File: Getopt::Gen::cmdline_pod.pm
-# Author: Bryan Jurish <moocow@ling.uni-potsdam.de>
+# Author: Bryan Jurish <moocow@cpan.org>
 # Description: template for command-line pod docs
 #
 #############################################################################
@@ -114,7 +114,7 @@ and it is currently maintained by Lorenzo Bettini.
 
 =head1 AUTHOR
 
-Bryan Jurish E<lt>moocow@ling.uni-potsdam.deE<gt>
+Bryan Jurish E<lt>moocow@cpan.orgE<gt>
 
 =head1 SEE ALSO
 
@@ -131,6 +131,8 @@ Text::Template(3pm).
 # TEMPLATE DATA
 ###############################################################
 __DATA__
+
+[@ $og{podpreamble} || '' @]
 
 =pod
 
@@ -348,9 +350,11 @@ __DATA__
 ###############################################################
 # configuration files
 ###############################################################
+=pod
+
 [@
   if (@{$og{rcfiles}} || $og{handle_rcfile} || $saw_rc_file) {
-    $OUT .= qq(=pod
+    $OUT .= qq(
 
 =head1 CONFIGURATION FILES
 
@@ -375,8 +379,9 @@ are ignored.
       $OUT .= "No configuration files are read by default.\n\n";
     }
   }
- $OUT .= "=cut\n"
 @]
+
+=cut
 
 
 ###############################################################

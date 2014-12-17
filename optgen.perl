@@ -3,7 +3,7 @@
 #############################################################################
 #
 # File: optgen.perl
-# Author: Bryan Jurish <moocow@ling.uni-potsdam.de>
+# Author: Bryan Jurish <moocow@cpan.org>
 # Description: generate an option-parser from extended .ggo files
 #
 #############################################################################
@@ -613,7 +613,7 @@ and it is currently maintained by Lorenzo Bettini.
 
 =head1 AUTHOR
 
-Bryan Jurish E<lt>moocow@ling.uni-potsdam.deE<gt>
+Bryan Jurish E<lt>moocow@cpan.orgE<gt>
 
 =head1 SEE ALSO
 
