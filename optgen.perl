@@ -84,7 +84,7 @@ GetOptions(## General Options
 ########################################################################
 if ($version) {
   print STDERR 
-    ("\n$0 version $VERSION by Bryan Jurish <moocow\@ling.uni-potsdam.de>\n",
+    ("\n$0 version $VERSION by Bryan Jurish <moocow\@cpan.org>\n",
      "\t using Getopt::Gen version $Getopt::Gen::VERSION\n",
      "\n"
     );
