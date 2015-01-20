@@ -9,7 +9,7 @@ program_version "0.01"
 
 purpose	"Test for moogengetopt.perl."
 details "Some details about the program."
-author "Bryan Jurish <moocow@ling.uni-potsdam.de>"
+author "Bryan Jurish <examples/config.h>"
 on_reparse "clobber"
 bugs "Is it buggy?"
 

@@ -3,7 +3,7 @@
 ###############################################################
 #
 #      File: Getopt::Gen::Parser.yp
-#    Author: Bryan Jurish <moocow@cpan.org>
+#    Author: Bryan Jurish <Gen/cmdline_pod.pm>
 #
 # Description: Yapp parser specification for
 #              DWDS query strings
@@ -18,7 +18,7 @@
 ###############################################################
 #
 #        Source: Getopt::Gen::Parser.yp
-# Source Author: Bryan Jurish <moocow@ling.uni-potsdam.de>
+# Source Author: Bryan Jurish <Gen/cmdline_pod.pm>
 #
 #   Description: Yapp parser for DWDS query strings
 #
@@ -376,7 +376,7 @@ Parse::Yapp by Francois Desarmenien.
 
 =head1 AUTHOR
 
-Bryan Jurish E<lt>moocow@ling.uni-potsdam.deE<gt>
+Bryan Jurish E<lt>Gen/cmdline_pod.pmE<gt>
 
 =head1 SEE ALSO
 

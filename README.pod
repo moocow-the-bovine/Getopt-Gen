@@ -27,7 +27,7 @@ used by gengetopt(1).
 
 =head1 AUTHOR
 
-Bryan Jurish E<lt>jurish@ling.uni-potsdam.deE<gt>
+Bryan Jurish E<lt>moocow@cpan.orgE<gt>
 
 =head1 SEE ALSO
 

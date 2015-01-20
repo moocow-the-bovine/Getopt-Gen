@@ -3,7 +3,7 @@
 #############################################################################
 #
 # File: Getopt::Gen::cmdline_h.pm
-# Author: Bryan Jurish <moocow@cpan.org>
+# Author: Bryan Jurish <Gen/cmdline_pod.pm>
 # Description: template for gengetopt-style c headers
 #
 #############################################################################
@@ -114,7 +114,7 @@ and it is currently maintained by Lorenzo Bettini.
 
 =head1 AUTHOR
 
-Bryan Jurish E<lt>moocow@cpan.orgE<gt>
+Bryan Jurish E<lt>Gen/cmdline_pod.pmE<gt>
 
 =head1 SEE ALSO
 
