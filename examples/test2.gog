@@ -1,8 +1,5 @@
 # -*- Mode: Shell-Script -*-
-# gengetopt specification for 'test'
-
-#package "test2"
-#version "0.01"
+# gengetopt specification for 'test2'
 
 program "test2"
 program_version "0.01"
@@ -18,17 +15,17 @@ This addenda section is braced with {} -- they should nest properly.
 }
 
 
-# User code
+##-- user code
 code { /* This is some test user-code */ }
 
-# rc file(s)
+##-- rc file(s)
 rcfile "/etc/test2rc"
 rcfile "~/test2rc"
 
-# Arguments
+##-- arguments
 argument "ARG1" "The first non-option argument"
 
-# Options
+##-- options
 group "Basic Options"
 funct   "functme"	f	"A funct option"
 flag	"flagme2"	g	"A 'flag2' option"
@@ -59,6 +56,5 @@ float  "floatme" - \
 	default="1.0" \
 	arg="FLOATARG"
 
-#rcfile "rcfile" c \
-#       "Read an alternate configuration file" \
-#       arg="FILE"
+##-- acknowledgements
+acknowledge `cat acknowledge.pod`
