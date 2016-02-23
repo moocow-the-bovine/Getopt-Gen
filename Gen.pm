@@ -1177,6 +1177,8 @@ Available keywords:
      handle_version=>1,                 # whether to handle '-V' and '--version' options
      handle_error=>1,                   # whether to exit on errors
 
+=back
+
 =cut
 
 
@@ -1249,13 +1251,21 @@ and it is currently maintained by Lorenzo Bettini.
 
 Bryan Jurish E<lt>moocow@cpan.orgE<gt>
 
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2003-2016 by Bryan Jurish
+
+This package is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.14.2 or,
+at your option, any later version of Perl 5 you may have available.
+
 =head1 SEE ALSO
 
-Getopt::Gen::cmdline_pod(3pm),
-Getopt::Gen::cmdline_h(3pm),
-Getopt::Gen::cmdline_c(3pm),
-Getopt::Gen::Parser(3pm),
-Text::Template(3pm),
-perl(1).
+L<Getopt::Gen::cmdline_pod(3pm)|Getopt::Gen::cmdline_pod>,
+L<Getopt::Gen::cmdline_h(3pm)|Getopt::Gen::cmdline_h>,
+L<Getopt::Gen::cmdline_c(3pm)|Getopt::Gen::cmdline_c>,
+L<Getopt::Gen::Parser(3pm)|Getopt::Gen::Parser>,
+L<Text::Template(3pm)|Text::Template>,
+L<perl(1)|perl>.
 
 =cut

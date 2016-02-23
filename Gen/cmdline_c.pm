@@ -65,6 +65,8 @@ Getopt::Gen::cmdline_c.pm - built-in template for generating C source files.
 Generate C source files
 from option specifications.
 
+=cut
+
 ###############################################################
 # METHODS
 ###############################################################

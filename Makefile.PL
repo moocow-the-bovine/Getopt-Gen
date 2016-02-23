@@ -7,10 +7,11 @@ WriteMakefile
    NAME          => 'Getopt::Gen',
    VERSION_FROM  => 'Gen.pm', # finds $VERSION
    ABSTRACT_FROM => 'Gen.pm',
-   AUTHOR        => 'Bryan Jurish <jurish@ling.uni-potsdam.de>',
+   AUTHOR        => 'Bryan Jurish <moocow@cpan.org>',
+   LICENSE       => 'perl',
    PREREQ_PM     => {
 		     # Run-time dependencies
-		     Parse::Lex => 2.15,
+		     Parse::Lex => 2.21,
 		     # Parser driver
 		     Parse::Yapp::Driver => 1.05,
 		     # Text::Template
@@ -33,8 +34,8 @@ WriteMakefile
 sub MY::postamble {
   (
    # how to format the README file
-   "README : README.pod\n"
-   ."\t pod2text README.pod > README\n\n"
+   "README.txt : README.rpod\n"
+   ."\t pod2text README.rpod > README.txt\n\n"
    # how to generate a yapp parser
    ."Gen/Parser.pm : Gen/Parser.yp\n"
    ."\t yapp -v -m Getopt::Gen::Parser -o \$@ \$<\n\n"
@@ -46,6 +47,6 @@ sub MY::dist_core {
   my $inherited = shift->SUPER::dist_core(@_);
   $inherited =~
     # ... distribution requires current README file
-    s/^dist\s*:/dist\ : README/m;
+    s/^dist\s*:/dist\ : README.txt/m;
   $inherited;
 }

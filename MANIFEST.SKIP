@@ -1,9 +1,10 @@
 MANIFEST\.SKIP
-CVS
+\bCVS\b
+\.svn
 \.cvsignore
 ~$
 ^Makefile
-t/tmp\.
+\btmp\b
 ^blib/
 ^pm_to_blib$
 \.tar\.gz$
@@ -15,3 +16,7 @@ Parser\.output$
 ^save
 ^test
 \bgraveyard\b
+\bMYMETA\b
+examples/test[12]$
+examples/.*\.(?:html|man|pod|txt)$
+examples/.*_(?:cmdline|main)\.[cho]

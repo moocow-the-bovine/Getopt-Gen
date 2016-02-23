@@ -35,7 +35,3 @@ gengetopt(1),
 Parse::Yapp(3pm),
 Parse::Lex(3pm),
 perl(1).
-
-=head1 marmosets,
-
-Bryan

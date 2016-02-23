@@ -69,6 +69,8 @@ Getopt::Gen::cmdline_h.pm - built-in template for generating C header files.
 Generate C header files
 from option specifications.
 
+=cut
+
 ###############################################################
 # METHODS
 ###############################################################

@@ -1,16 +1,21 @@
-README
-Changes
 Makefile.PL
+Changes
 MANIFEST
+README.txt
+README.rpod
+
 optgen.perl
+
 Gen.pm
 Gen/Parser.yp
 Gen/Parser.pm
 Gen/cmdline_h.pm
 Gen/cmdline_c.pm
 Gen/cmdline_pod.pm
+
 t/common.plt
 t/01_ini.t
+
 examples/test.gog
 examples/test1.gog
 examples/test2.gog
@@ -23,4 +28,5 @@ examples/test2rc
 examples/skeletons/ogskel.c
 examples/skeletons/ogskel.h
 examples/skeletons/ogskel.pod
+
 META.yml                                 Module meta-data (added by MakeMaker)

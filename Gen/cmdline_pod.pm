@@ -69,6 +69,8 @@ Getopt::Gen::cmdline_pod.pm - built-in template for generating plain old documen
 Generate pod documentation
 from option specifications.
 
+=cut
+
 ###############################################################
 # METHODS
 ###############################################################
@@ -260,7 +262,6 @@ __DATA__
 ###############################################################
 # Arguments
 ###############################################################
-=pod
 
 [@
   if ($og{unnamed}) {
@@ -276,15 +277,12 @@ __DATA__
     }
     $OUT .= "=back\n\n";
   }
+  $OUT = "=pod\n\n$OUT\n\n=cut\n\n" if ($OUT);
 @]
-
-=cut
-
 
 ###############################################################
 # Options
 ###############################################################
-=pod
 
 [@
   if (@{$og{optl}}) {
@@ -340,18 +338,15 @@ __DATA__
 		 .(defined($opt->{details}) ? ($opt->{details}."\n\n") : '')
 		 ."\n\n\n");
       }
+      #// -- print last-group footer
+      $OUT .= "=back\n\n\n";
   }
-  #// -- print last-group footer
-  $OUT .= "=back\n\n\n";
+  $OUT = "=pod\n\n$OUT\n\n=cut\n\n" if ($OUT);
 @]
-
-=cut
 
 ###############################################################
 # configuration files
 ###############################################################
-=pod
-
 [@
   if (@{$og{rcfiles}} || $og{handle_rcfile} || $saw_rc_file) {
     $OUT .= qq(
@@ -379,14 +374,14 @@ are ignored.
       $OUT .= "No configuration files are read by default.\n\n";
     }
   }
+  $OUT = "=pod\n\n$OUT\n\n=cut\n\n" if ($OUT);
 @]
-
-=cut
 
 
 ###############################################################
 # Addenda
 ###############################################################
+
 =pod
 
 =head1 ADDENDA
