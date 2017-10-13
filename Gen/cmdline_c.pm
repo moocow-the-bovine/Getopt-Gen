@@ -245,11 +245,11 @@ void
   [@$og{funcname}@]_print_version ();
   [@
    #//-- intro: purpose
-   my @purpose = split(/\n/, ($og{purpose}) || "???"));
+   my @purpose = split(/\n/, ($og{purpose} || "???"));
    $OUT .= join("\n  ",
 		q{printf("\n");},
 		q{printf("Purpose:\n");},
-		(map {"printf(\"  $_\\n\");"} @purpose),
+		(map {qq{printf("  $_\\n");}} @purpose),
 		q{printf("\n");},
 	       );
 
