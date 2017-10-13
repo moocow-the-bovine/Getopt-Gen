@@ -84,10 +84,7 @@ GetOptions(## General Options
 ########################################################################
 if ($version) {
   print STDERR 
-    ("\n$0 version $VERSION by Bryan Jurish <moocow\@cpan.org>\n",
-     "\t using Getopt::Gen version $Getopt::Gen::VERSION\n",
-     "\n"
-    );
+    ("\n$0 version $VERSION by Bryan Jurish <moocow\@cpan.org>\n");
   exit 0 if ($version);
 }
 pod2usage({-verbose=>2,-exit=>0}) if ($man);
