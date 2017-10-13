@@ -21,7 +21,7 @@ use IO::File;
 ########################################################################
 # Globals
 ########################################################################
-our $VERSION = 0.07;
+our $VERSION = $Getopt::Gen::VERSION;
 our $progname = 'optgen.perl';
 
 
@@ -183,10 +183,6 @@ __END__
 =head1 NAME
 
 optgen.perl - Generate C source code for command-line parsing.
-
-=head1 VERSION
-
-Version 0.06
 
 =head1 SYNOPSIS
 
