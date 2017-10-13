@@ -2,7 +2,10 @@
 ##
 ## Revision history for Perl module Getopt::Gen
 
-0.14 Tue, 23 Feb 2016 09:23:49 +0100 moocowq
+0.15 Fri, 13 Oct 2017 15:13:02 +0200 moocow
+	* fixes for cmdline_c help message for multi-line 'purpose' declarations
+
+0.14 Tue, 23 Feb 2016 09:23:49 +0100 moocow
 	* updated email address to @cpan
 	* tidied up pod docs
 	* first CPAN release (finally)
